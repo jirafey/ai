@@ -1,44 +1,124 @@
-:root {
-  --gutter: clamp(12px, 2.5vw, 28px);
-}
-.container { padding: var(--gutter); gap: var(--gutter); }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Roboto:wght@400&display=swap');
 
-body{background-color: black;}
-h2{
-    font-size: clamp(1.2rem, 4vw, 2.4rem);
-    line-height: 1.15;
-    color:brown
-}
-h3{
-    font-size: clamp(1.2rem, 4vw, 2.4rem);
-    line-height: 1.15;
-    color:orange
+body {
+    background-color: #1a1a1a;
+    font-family: 'Roboto', sans-serif;
+    color: #f5f5f5;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 5%; /* This line adds responsive left and right margins */
 }
 
-li{
-    font-size: clamp(1.2rem, 4vw, 2.4rem);
-    line-height: 1.15;
-    color:orangered
+header, footer {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #ffffff;
+  /* Adjusting for body padding by using negative margins */
+  margin: 0 -5%;
 }
 
-h1{
-    font-size: clamp(1.2rem, 4vw, 2.4rem);
-    line-height: 1.15;
-    color:red
+footer {
+  border-top: 3px solid #ffffff;
+  border-bottom: none;
+  margin-top: 30px;
+}
+a:visited {
+  color: #edabab; /* A muted, visible gray for visited links */
+}
+a {
+  color: #9e9e9e; /* A muted, visible gray for visited links */
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
 }
 
-body{
-    font-size: clamp(1.2rem, 4vw, 2.4rem);
-    line-height: 1.15;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-    color:gray;
+nav a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1em;
+  padding: 10px;
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+nav a:hover {
+  color: #1a1a1a;
+  transform: scale(1.1);
+}
+
+nav a:active {
+  color: #ff00ff;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  line-height: 1.2;
+  padding: 10px 20px;
+}
+
+h1 { 
+  color: #f0f;
+  text-shadow: 0 0 10px #f0f, 0 0 20px #f0f;
+  font-size: 3em;
+}
+
+h2 {
+  color: #0ff;
+  text-shadow: 0 0 8px #0ff;
+  font-size: 2.2em;
+}
+
+h3 {
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+  font-size: 1.7em;
+}
+
+p {
+  padding: 0 20px; /* Added padding for paragraphs */
 }
 
 ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  padding: 0;
+  padding-left: 20px;
   list-style: none;
 }
 
+li {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-left: 5px solid #0f0;
+}
+
+.dog, .cat {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border: 4px solid #0ff;
+  box-shadow: 0 0 15px #0ff;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 3%; /* Adjusting margin for smaller screens */
+  }
+  header, footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    margin: 0 -3%; /* Matching adjusted body padding */
+  }
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+}
