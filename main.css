@@ -7,3 +7,14 @@
 .edit{
     cursor: pointer;
 }
+
+#myUL{
+    list-style-type:none;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+  border-radius: 3px;
+  padding: 0 2px;
+}
