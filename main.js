@@ -1,46 +1,81 @@
+const input = document.getElementById('taskInput');
+const list = document.getElementById('myUL');
+const addButton = document.getElementById('addBtn');
+
 class Todo {
     constructor() {
-        this.tasks = [];
+        const savedTasks = JSON.parse(localStorage.getItem('user'));
+        this.tasks = savedTasks || [];
         this.draw();
-        this.add();
-        this.del();
+        this.delegate();
     }
 
-    draw() {}
-    add() {
-        // let li = document.createElement("li");
-        // let inputValue=document.getElementById("input1").value;
-        // li.textContent=inputValue;
-        // document.getElementById("myUL").appendChild(li);
-        for (i=0; i<tasks.length; i++){
-            this.tasks[i]=(input1.value);
+    draw() {
+        list.innerHTML = '';
+        for (const [index, task] of this.tasks.entries()){
+            const li = document.createElement('li');
+            li.dataset.index = index;
+
+            const textNode = document.createTextNode(task + ' ');
+            li.appendChild(textNode);
+
+            const deleteNode = document.createElement('span');
+            deleteNode.className = 'delete';
+            deleteNode.innerHTML ='❌';
+            li.appendChild(deleteNode);
+            li.appendChild(document.createTextNode(' '));
+
+            const editNode = document.createElement('span');
+            editNode.className = 'edit';
+            editNode.innerHTML = '✏️';
+            li.appendChild(editNode);
+            
+            list.appendChild(li);
         }
     }
-    del() {}
-    edit(x) {}
+    add() {
+        const taskText = input.value.trim();
+        if (taskText) {
+            this.tasks.push(taskText);
+            localStorage.setItem('user', JSON.stringify(this.tasks));
+            this.draw();
+        }
+
+        input.value = '';
+    }
+    del(index) {
+        this.tasks.splice(index, 1);
+        this.draw();
+    }
+    edit(index, x) {
+        this.tasks[index]=x;
+        this.draw();
+    }
+    delegate(){
+        const t = document.getElementById('myUL');
+
+        t.onclick = (event) =>  {
+            const clickedElement = event.target;
+            const listItem = clickedElement.closest('li');
+            
+            if (clickedElement.classList.contains('delete')) {
+                const index = listItem.dataset.index;
+                this.del(index);
+            }
+            else if(clickedElement.classList.contains('edit')) {
+                const index = listItem.dataset.index;
+                const editPrompt = prompt("change name of the task");
+                this.edit(index, editPrompt);
+            }
+            else  {
+                return;
+            }
+        }
+    }
 }
 
 const myTodo = new Todo();
-document.getElementById("addBtn").addEventListener("click", () => {
+addButton.addEventListener("click", () => {
     myTodo.add();
 });
-let userArray = ["a", 25];
-localStorage.setItem('user', JSON.stringify(userArray));
 
-let userData = JSON.parse(localStorage.getItem('user'));
-console.log(userData); // ["a", 25]
-
-
-
-// let savedInput = JSON.parse(localStorage.getItem('user2'));
-// console.log(savedInput);
-
-// let input = prompt("input your data");
-// const userData3 = JSON.parse(localStorage.getItem('user2'));
-// console.log(userData3); // input
-// localStorage.setItem('user2', JSON.stringify(input));
-// const userData2 = JSON.parse(localStorage.getItem('user2'));
-// console.log(userData2); // input
-
-let tasks = [];
-tasks.append("a");

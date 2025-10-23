@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="main.js"></script>
-
+<style>
+        .highlight {
+            background-color: yellow;
+        }
+        li {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <!--lista zadań-->
@@ -20,13 +26,8 @@
     • po odświeżeniu strony lista wypełnia się wpisami z Local Storage -->
     
     <div id="mainDiv" class="header">
-        <input type="text" id="input1" placeholder="input data">
+        <input type="text" id="taskInput" placeholder="input data">
         <span id="addBtn" class="addBtn">Add</span>
-        <!-- <p>🗑️</p>
-        <p>🗑️</p>
-        <p>🗑️</p>
-        <p>🗑️</p>
-        <p>🗑️</p> -->
         <ul id="myUL">
             <li>hit the gym</li>
             <li>eat</li>
@@ -34,5 +35,7 @@
         </ul>
         
     </div>
+    <script src="main.js"></script>
+
 </body>
 </html>
