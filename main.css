@@ -1,0 +1,44 @@
+#map { height: 420px; }
+#puzzle-bench { 
+    height: 420px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3px;
+ }
+
+#m { height: 50px; }
+
+#solve-bench { 
+    margin-top: 20px;
+    height: 420px;
+    border: solid red 2px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3px;
+ }
+
+.game-cell {
+  box-sizing: border-box;
+  border: 1px dashed #aaaaaa;
+  
+  background-color: #f0f0f0;
+
+  border-radius: 4px;
+
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+#puzzle-bench canvas,
+#solve-bench canvas {
+    /* Mówi puzzlowi, aby wypełnił 100% dostępnego miejsca */
+    width: 100%;
+    height: 100%;
+
+    /* Dodatkowe ulepszenia wyglądu */
+    cursor: grab; /* Zmienia kursor, by pokazać, że można chwycić */
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
