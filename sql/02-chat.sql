@@ -1,0 +1,6 @@
+CREATE TABLE chat (
+    id      INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nick    TEXT    NOT NULL,
+    message TEXT    NOT NULL,
+    likes   INTEGER NOT NULL DEFAULT 0
+);
